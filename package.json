@@ -1,0 +1,15 @@
+{
+  "name": "LidorCyeraAutomationProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:backend": "echo \"No backend tests defined\" && exit 0",
+    "test:ui": "npx playwright test"
+  },
+  "private": true,
+  "dependencies": {
+    "@playwright/test": "^1.49.1"
+  }
+}
