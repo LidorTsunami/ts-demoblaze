@@ -11,6 +11,7 @@ export class HomePage extends BasePage {
         this.productItems = this.page.locator('.col-lg-4.col-md-6.mb-4');
     }
 
+    // @ts-ignore
     async assertCardsHaveRequiredFields(): Promise<void> {
         await this.productItems.first().waitFor({ state: 'visible' });
         const count = await this.productItems.count();
@@ -39,6 +40,7 @@ export class HomePage extends BasePage {
             expect(imgSrc).not.toBeNull();
         }
     }
+    // @ts-ignore
     async selectProduct(productNumber: number): Promise<ProductPage> {
         await this.page.locator('.card > a').nth(productNumber).click();
         return new ProductPage(this.page);

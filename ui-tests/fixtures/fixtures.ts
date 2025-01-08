@@ -2,7 +2,8 @@ import { BrowserContext, chromium, Page, test as base } from '@playwright/test';
 import { Browser } from 'playwright';
 import { BasePage } from "../pages/basePage";
 import { HomePage } from "../pages/homePage";
-import { ProductPage } from "../pages/ProductPage";
+import { ProductPage } from "../pages/productPage";
+
 
 
 export const test = base.extend<{
@@ -10,8 +11,9 @@ export const test = base.extend<{
     demoblazeHomePage: HomePage;
     productPage: ProductPage;
 }>({
+    // @ts-ignore
     newPage: async ({}, use) => {
-        const browser: Browser = await chromium.launch({ headless: false }); // Adjust headless as needed
+        const browser: Browser = await chromium.launch({ headless: false });
         const context: BrowserContext = await browser.newContext();
         const page: Page = await context.newPage();
         const basePage = new BasePage(page);
@@ -21,12 +23,13 @@ export const test = base.extend<{
         await browser.close();
     },
 
+    // @ts-ignore
     demoblazeHomePage: async ({ newPage }, use) => {
         const homePage = await newPage.navigateToDemoblaze();
         await use(homePage);
     },
 
-
+    // @ts-ignore
     productPage: async ({ demoblazeHomePage }, use) => {
         const productPage = await demoblazeHomePage.selectProduct(0);
         await use(productPage);

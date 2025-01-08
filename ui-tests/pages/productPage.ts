@@ -18,6 +18,7 @@ export class ProductPage extends BasePage {
         this.addToCartButton = this.page.locator('a.btn-success.btn-lg');
     }
 
+    // @ts-ignore
     async validateProductDetails(expectedName: string, expectedPrice: string, expectedDescription: string): Promise<void> {
         const productName = await this.productName.textContent();
         const productPrice = await this.productPrice.textContent();
@@ -38,14 +39,17 @@ export class ProductPage extends BasePage {
         expect(productDescription).toContain(expectedDescription);
     }
 
+    // @ts-ignore
     async addProductToCart(): Promise<void> {
         console.log("Clicking 'Add to Cart' button...");
         await this.addToCartButton.click();
     }
 
+    // @ts-ignore
     async assertProductAddedDialog(expectedMessage: string): Promise<void> {
 
         let dialogPromise: Promise<string>;
+        // @ts-ignore
         dialogPromise = new Promise<string>((resolve) => {
             this.page.once('dialog', (dialog) => {
                 console.log(`Dialog message received: ${dialog.message()}`);
