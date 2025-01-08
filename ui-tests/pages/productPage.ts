@@ -40,7 +40,7 @@ export class ProductPage extends BasePage {
 
     async addProductToCart(): Promise<void> {
         console.log("Clicking 'Add to Cart' button...");
-        await this.addToCartButton.click();  // Click on the Add to Cart button
+        await this.addToCartButton.click();
     }
 
     async assertProductAddedDialog(expectedMessage: string): Promise<void> {
@@ -48,8 +48,8 @@ export class ProductPage extends BasePage {
         let dialogPromise: Promise<string>;
         dialogPromise = new Promise<string>((resolve) => {
             this.page.once('dialog', (dialog) => {
-                console.log(`Dialog message received: ${dialog.message()}`);  // Log the dialog message
-                resolve(dialog.message());  // Resolve with the dialog message
+                console.log(`Dialog message received: ${dialog.message()}`);
+                resolve(dialog.message());
                 dialog.dismiss().catch(() => {
                 });
             });
